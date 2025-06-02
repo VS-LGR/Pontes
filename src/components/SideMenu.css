@@ -1,0 +1,110 @@
+.side-menu-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.side-menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0; right: 0;
+  width: 80vw;
+  max-width: 340px;
+  height: 100vh;
+  background: #fff;
+  z-index: 1100;
+  box-shadow: -2px 0 16px rgba(0,0,0,0.08);
+  transform: translateX(100%);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 24px 18px 24px;
+}
+.side-menu-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f6f6f6;
+  display: inline-block;
+}
+.side-menu-user-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #222;
+  font-family: 'Montserrat', sans-serif;
+}
+.side-menu-user-role {
+  font-size: 0.95rem;
+  color: #888;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.side-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 18px;
+}
+.side-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+}
+.side-menu-link.active {
+  background: #7BA17B;
+  color: #fff;
+}
+.side-menu-link.active .side-menu-link-icon svg {
+  stroke: #fff;
+}
+.side-menu-link-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.side-menu-logout {
+  margin-top: auto;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #B07A8C;
+  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  cursor: pointer;
+  border-top: 1px solid #f0f0f0;
+}
+.side-menu-logout-icon {
+  display: flex;
+  align-items: center;
+} 

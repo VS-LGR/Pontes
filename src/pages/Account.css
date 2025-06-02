@@ -1,0 +1,148 @@
+.account-container {
+  min-height: 100vh;
+  background: #fff;
+  padding: 0 0 24px 0;
+}
+
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 16px 0 16px;
+}
+
+.menu-icon {
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.account-profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 16px 0 16px;
+}
+.account-avatar-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.account-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f6f6f6;
+  display: inline-block;
+}
+.account-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.account-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #222;
+  font-family: 'Montserrat', sans-serif;
+}
+.account-email {
+  font-size: 1rem;
+  color: #888;
+  font-family: 'Montserrat', sans-serif;
+}
+.account-edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.account-section-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 22px 0 10px 16px;
+  color: #222;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.account-categories {
+  display: flex;
+  gap: 10px;
+  margin-left: 16px;
+  margin-bottom: 8px;
+}
+.account-category {
+  background: #f6f6f6;
+  border-radius: 12px;
+  padding: 12px 10px 8px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #B07A8C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+}
+.category-icon {
+  font-size: 1.3rem;
+  margin-bottom: 2px;
+}
+
+.account-section-box {
+  background: #f6f6f6;
+  border-radius: 16px;
+  margin: 18px 16px 0 16px;
+  padding: 16px 16px 10px 16px;
+}
+.account-data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 1rem;
+  color: #222;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+}
+.account-payment-methods {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  color: #222;
+  font-size: 1rem;
+}
+.account-payment-methods-label {
+  font-style: italic;
+}
+
+.account-donation-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.account-donation-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.account-donation-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.account-donation-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+}
+.account-donation-meta {
+  font-size: 0.95rem;
+  color: #444;
+} 

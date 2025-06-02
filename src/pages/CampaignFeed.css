@@ -1,0 +1,130 @@
+.feed-container {
+  min-height: 100vh;
+  background: #fff;
+  padding: 0 0 24px 0;
+}
+
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 16px 0 16px;
+}
+
+.menu-icon {
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.category-filter-bar {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 16px 8px 8px 8px;
+  margin-bottom: 8px;
+}
+
+.category-filter-btn {
+  background: #f6f6f6;
+  border: none;
+  border-radius: 16px;
+  padding: 12px 10px 8px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #B07A8C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.category-filter-btn.selected {
+  background: #B07A8C;
+  color: #fff;
+}
+
+.category-icon {
+  font-size: 1.3rem;
+  margin-bottom: 2px;
+}
+
+.campaigns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0 8px;
+}
+
+.campaign-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.campaign-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.campaign-info {
+  padding: 10px 12px 14px 12px;
+}
+
+.campaign-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #222;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: #e5e5e5;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #682C3B;
+  border-radius: 8px 0 0 8px;
+  transition: width 0.3s;
+}
+
+.campaign-amounts {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 2px;
+}
+
+.raised {
+  font-weight: 700;
+  color: #682C3B;
+}
+
+.goal {
+  color: #444;
+}
+
+.campaign-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+@media (max-width: 400px) {
+  .campaigns-list {
+    padding: 0 2px;
+  }
+} 

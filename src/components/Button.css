@@ -1,0 +1,39 @@
+.btn {
+  width: 100%;
+  padding: 18px 0;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 24px;
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn.burgundy {
+  background: #682C3B;
+  color: #fff;
+}
+
+.btn.rose {
+  background: #B07A8C;
+  color: #fff;
+}
+
+.btn.yellow {
+  background: #F5C242;
+  color: #fff;
+}
+
+.btn.green {
+  background: #7BA17B;
+  color: #fff;
+}
+
+.btn.bold {
+  font-weight: 700;
+}
+
+.btn:last-child {
+  margin-bottom: 0;
+} 
