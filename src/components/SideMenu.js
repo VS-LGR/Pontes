@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { logoutUser } from '../utils/userStorage';
 import './SideMenu.css';
 
 const menuItems = [
@@ -11,6 +12,11 @@ const menuItems = [
 
 export default function SideMenu({ open, onClose, user, currentPage }) {
   const navigate = useNavigate();
+  const handleLogout = () => {
+    logoutUser();
+    onClose();
+    navigate('/login');
+  };
   return (
     <>
       <div className={`side-menu-overlay${open ? ' open' : ''}`} onClick={onClose} />
@@ -34,7 +40,7 @@ export default function SideMenu({ open, onClose, user, currentPage }) {
             </button>
           ))}
         </nav>
-        <button className="side-menu-logout" onClick={() => {/* handle logout */}}>
+        <button className="side-menu-logout" onClick={handleLogout}>
           <span className="side-menu-logout-icon">
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M16 17l5-5-5-5M21 12H9" stroke="#B07A8C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><rect x="3" y="4" width="6" height="16" rx="2" stroke="#B07A8C" strokeWidth="2"/></svg>
           </span>
