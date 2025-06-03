@@ -1,35 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 import SideMenu from '../components/SideMenu';
+import { getCurrentUser } from '../utils/userStorage';
+import CategoryFilterBar from '../components/CategoryFilterBar';
+import CampaignCard from '../components/CampaignCard';
 import { campaigns } from '../data/campaigns';
 import './CampaignFeed.css';
-
-const categoriesList = [
-  { label: 'Educação', icon: '🎓' },
-  { label: 'Saúde', icon: '💗' },
-  { label: 'Natureza', icon: '🌱' },
-  { label: 'Pessoas', icon: '🧑' },
-  { label: 'Animais', icon: '🐾' },
-  { label: 'Outros', icon: '🔲' },
-];
-
-function CategoryFilterBar({ selected, onSelect }) {
-  return (
-    <div className="category-filter-bar">
-      {categoriesList.map((cat) => (
-        <button
-          key={cat.label}
-          className={`category-filter-btn${selected === cat.label ? ' selected' : ''}`}
-          onClick={() => onSelect(cat.label)}
-        >
-          <span className="category-icon">{cat.icon}</span>
-          <span>{cat.label}</span>
-        </button>
-      ))}
-    </div>
-  );
-}
 
 function ProgressBar({ value, max }) {
   const percent = Math.min(100, Math.round((value / max) * 100));
@@ -40,27 +17,23 @@ function ProgressBar({ value, max }) {
   );
 }
 
-function CampaignCard({ campaign }) {
-  return (
-    <Link to={`/campanha/${campaign.id}`} className="campaign-card-link">
-      <div className="campaign-card">
-        <img src={campaign.image} alt={campaign.name} className="campaign-img" />
-        <div className="campaign-info">
-          <div className="campaign-title">{campaign.name}</div>
-          <ProgressBar value={campaign.raised} max={campaign.goal} />
-          <div className="campaign-amounts">
-            <span className="raised">R${campaign.raised.toLocaleString()}</span>
-            <span className="goal">meta: R${campaign.goal.toLocaleString()}</span>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
 export default function CampaignFeed() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const u = getCurrentUser();
+    if (!u) {
+      navigate('/login');
+    } else {
+      setUser(u);
+    }
+  }, [navigate]);
+
+  if (!user) return null;
+
   // Filter campaigns by category if needed in the future
   return (
     <div className="feed-container">
@@ -76,7 +49,7 @@ export default function CampaignFeed() {
           <CampaignCard key={c.id} campaign={c} />
         ))}
       </div>
-      <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} user={{ name: 'Nome completo', role: 'DOADOR' }} currentPage="/feed" />
+      <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} user={user} currentPage="/feed" />
     </div>
   );
 } 

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import SideMenu from '../components/SideMenu';
+import { getCurrentUser } from '../utils/userStorage';
 import './CreateCampaign.css';
 
 const categoriesList = [
@@ -34,7 +36,21 @@ function CategorySelector({ selected, onSelect }) {
 
 export default function CreateCampaign() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const u = getCurrentUser();
+    if (!u) {
+      navigate('/login');
+    } else {
+      setUser(u);
+    }
+  }, [navigate]);
+
+  if (!user) return null;
+
   const handleCategory = (cat) => {
     setCategories((prev) =>
       prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
@@ -70,7 +86,7 @@ export default function CreateCampaign() {
         <Input placeholder="CPF/CNPJ" />
         <Button color="green" bold type="submit">Publicar</Button>
       </form>
-      <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} user={{ name: 'Nome completo', role: 'INSTITUIÇÃO' }} currentPage="/campanha/nova" />
+      <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} user={user} currentPage="/campanha/nova" />
     </div>
   );
 } 

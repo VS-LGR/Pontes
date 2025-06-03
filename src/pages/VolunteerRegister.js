@@ -64,7 +64,7 @@ export default function VolunteerRegister() {
         categories,
         type: 'volunteer',
       });
-      navigate('/conta');
+      navigate('/feed');
     } catch (err) {
       setError(err.message);
     }

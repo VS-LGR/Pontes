@@ -17,7 +17,7 @@ export default function Login() {
     setError('');
     try {
       loginUser(email, password);
-      navigate('/conta');
+      navigate('/feed');
     } catch (err) {
       setError(err.message);
     }

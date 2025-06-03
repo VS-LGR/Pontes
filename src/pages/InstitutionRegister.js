@@ -74,7 +74,7 @@ export default function InstitutionRegister() {
         password,
         type: 'institution',
       });
-      navigate('/conta');
+      navigate('/feed');
     } catch (err) {
       setError(err.message);
     }

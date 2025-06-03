@@ -9,6 +9,7 @@ import CampaignDetails from './pages/CampaignDetails';
 import Donate from './pages/Donate';
 import Account from './pages/Account';
 import CreateCampaign from './pages/CreateCampaign';
+import InstitutionProfile from './pages/InstitutionProfile';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/campanha/:id/doar" element={<Donate />} />
         <Route path="/conta" element={<Account />} />
         <Route path="/campanha/nova" element={<CreateCampaign />} />
+        <Route path="/instituicao/perfil" element={<InstitutionProfile />} />
       </Routes>
     </Router>
   );

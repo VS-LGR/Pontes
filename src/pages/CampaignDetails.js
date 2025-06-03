@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
+import SideMenu from '../components/SideMenu';
+import { getCurrentUser } from '../utils/userStorage';
 import { campaigns } from '../data/campaigns';
 import './CampaignDetails.css';
 
@@ -17,15 +19,29 @@ function ProgressBar({ value, max }) {
 export default function CampaignDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const campaign = campaigns.find(c => c.id === Number(id));
+
+  useEffect(() => {
+    const u = getCurrentUser();
+    if (!u) {
+      navigate('/login');
+    } else {
+      setUser(u);
+    }
+  }, [navigate]);
+
+  if (!user) return null;
   if (!campaign) {
     return <div className="campaign-details-container"><p>Campanha não encontrada.</p></div>;
   }
+
   return (
     <div className="campaign-details-container">
       <div className="header-row">
         <Logo />
-        <div className="menu-icon">
+        <div className="menu-icon" onClick={() => setMenuOpen(true)}>
           <svg width="32" height="32" viewBox="0 0 32 32"><rect y="7" width="32" height="3" rx="1.5" fill="#222"/><rect y="14" width="32" height="3" rx="1.5" fill="#222"/><rect y="21" width="32" height="3" rx="1.5" fill="#222"/></svg>
         </div>
       </div>
@@ -64,6 +80,7 @@ export default function CampaignDetails() {
         <div className="desc-text">{campaign.description}</div>
       </div>
       <Button color="green" bold style={{ marginTop: 24 }} onClick={() => navigate(`/campanha/${campaign.id}/doar`)}>Doar</Button>
+      <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} user={user} currentPage={`/campanha/${id}`} />
     </div>
   );
 } 
