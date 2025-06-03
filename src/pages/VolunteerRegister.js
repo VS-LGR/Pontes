@@ -43,6 +43,7 @@ export default function VolunteerRegister() {
   const [about, setAbout] = useState('');
   const [error, setError] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleCategory = (cat) => {
@@ -64,7 +65,8 @@ export default function VolunteerRegister() {
         categories,
         type: 'volunteer',
       });
-      navigate('/feed');
+      setSuccess(true);
+      setTimeout(() => navigate('/login'), 2000);
     } catch (err) {
       setError(err.message);
     }
@@ -93,7 +95,8 @@ export default function VolunteerRegister() {
         <div className="section-title">Categorias que te interessam</div>
         <CategorySelector selected={categories} onSelect={handleCategory} />
         {error && <div className="register-error">{error}</div>}
-        <Button color="yellow" bold type="submit">Salvar</Button>
+        {success && <div className="register-success">Conta criada com sucesso! Redirecionando para login...</div>}
+        <Button color="yellow" bold type="submit" disabled={success}>Salvar</Button>
       </form>
       <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} user={{ name, role: 'DOADOR' }} currentPage="/voluntario" />
     </div>

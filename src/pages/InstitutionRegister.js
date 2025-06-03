@@ -47,6 +47,7 @@ export default function InstitutionRegister() {
   const [adminCpf, setAdminCpf] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -74,7 +75,8 @@ export default function InstitutionRegister() {
         password,
         type: 'institution',
       });
-      navigate('/feed');
+      setSuccess(true);
+      setTimeout(() => navigate('/login'), 2000);
     } catch (err) {
       setError(err.message);
     }
@@ -109,7 +111,8 @@ export default function InstitutionRegister() {
         <Input placeholder="CPF" value={adminCpf} onChange={e => setAdminCpf(e.target.value)} />
         <Input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} />
         {error && <div className="register-error">{error}</div>}
-        <Button color="yellow" bold type="submit">Salvar</Button>
+        {success && <div className="register-success">Conta criada com sucesso! Redirecionando para login...</div>}
+        <Button color="yellow" bold type="submit" disabled={success}>Salvar</Button>
       </form>
       <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} user={{ name, role: 'INSTITUIÇÃO' }} currentPage="/instituicao" />
     </div>
